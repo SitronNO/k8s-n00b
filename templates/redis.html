@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block redis %}
+    <table>
+        <tr>
+            <th>Hostname</th>
+            <th>First seen</th>
+            <th>Last seen</th>
+            <th>Counter</th>
+        </tr>
+    {% for server in server_list %}
+        <tr>
+            <td>{{ server['hostname'] }}</td>
+            <td>{{ server['first_seen'] }}</td>
+            <td>{{ server['last_seen'] }}</td>
+            <td>{{ server['counter'] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
