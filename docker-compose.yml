@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: friendlyhello:latest
+    container_name: helloworld
+    restart: unless-stopped
+    networks:
+      - public
+      - internal
+    ports:
+      - "5000:5000"
+  redis:
+    image: redis:5.0-bullseye
+    expose:
+      - "6379"
+    command: redis-server --appendonly yes
+    networks:
+      - internal
+
+networks:
+  public:
+  internal:
