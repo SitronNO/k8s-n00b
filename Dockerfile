@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 EXPOSE 5000
 
 # Define environment variable
-ENV NAME World
+ENV REDIS_SERVER "redis"
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]

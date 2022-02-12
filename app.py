@@ -30,11 +30,12 @@ def genTable(redis, hostname):
 @app.route("/")
 def hello():
 
+    redis_html = ""
     try:
-        visits = redis.ping()
+        redis_html += "Connection to Redis (servername: {}): {}<br />".format(os.getenv("REDIS_SERVER", "localhost"), redis.ping())
         server_data = genTable(redis, socket.gethostname())
     except RedisError:
-        redis_html = "Cannot connect to Redis"
+        redis_html += "Cannot update or insert data into Redis"
         return render_template('error.html', hostname=socket.gethostname(), redis_html=redis_html)
 
     return render_template('redis.html', hostname=socket.gethostname(), server_list=server_data)
