@@ -9,12 +9,14 @@ This part also contains a `Dockerfile` and `docker-compose.yml` to create the co
 
 The Docker images built are hosted on my public repo at Docker Hub: https://hub.docker.com/repository/docker/sitronno/redishello
 
-**Note:** I use the `bullseye` and `buster` version of python3-slim and redis Docker images, since my Kubernetes lab consists of Raspberry Pi's, running Raspbian 10.
+##### Notes
+
+- I use the `bullseye` and `buster` version of python3-slim and redis Docker images, since my Kubernetes lab consists of Raspberry Pi's, running Raspbian 10.
+- To build and upload multi-arch images to Docker Hub, use [buildx](https://github.com/docker/buildx): `docker buildx build --push --platform linux/arm/v7,linux/amd64 --tag sitronno/redishello:v1.0 .`
 
 ### k8s
 
 All files related to run the webapp and Redis on my Kubernetes cluster. At the moment, this is my work in progress.
-
 
 ## Progress
 

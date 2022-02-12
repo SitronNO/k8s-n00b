@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   web:
-    image: redishello:v1.0
+    image: sitronno/redishello:v1.0
     container_name: redishello
     restart: unless-stopped
     networks:
