@@ -21,7 +21,7 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 ## Progress
 
 - [x] Create a webapp using Redis
-- [ ] Create Docker images for amd64 and armv7 and upload to Docker Hub
+- [x] Create Docker images for amd64 and armv7 and upload to Docker Hub
 - [ ] Create Kubernetes Pod files for webapp and Redis and deploy to Cluster
 - [ ] Create Kubernetes Service file for Redis and verify
 - [ ] Create Kubernetes Deployment for all above
