@@ -7,7 +7,7 @@ A project to learn Kubernetes. Consists of two main parts:
 A simple Flask webpage using redis to track hostname, first and last visit, and number of visits. The idea is to run one Redis-server and multiple webapps in the Kubernetes cluster.
 This part also contains a `Dockerfile` and `docker-compose.yml` to create the container and verify it using Docker.
 
-The Docker images built are hosted on my public repo at Docker Hub: https://hub.docker.com/repository/docker/sitronno/redishello
+The Docker images built are hosted on my public repo at Docker Hub: https://hub.docker.com/r/sitronno/redishello
 
 ##### Notes
 
