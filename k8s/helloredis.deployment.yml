@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: helloredis
-        image: sitronno/redishello:v1.0
+        image: sitronno/redishello:v1.1
         ports:
         - containerPort: 5000
         env:
