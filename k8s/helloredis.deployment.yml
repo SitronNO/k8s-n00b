@@ -23,4 +23,3 @@ spec:
         env:
         - name: REDIS_SERVER
           value: redis-service
-

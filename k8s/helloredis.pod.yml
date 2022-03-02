@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: redishello
+  name: helloredis
 spec:
   containers:
   - name: helloredis
