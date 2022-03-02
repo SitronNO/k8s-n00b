@@ -38,7 +38,7 @@ def hello():
         redis_html += "Cannot update or insert data into Redis"
         return render_template('error.html', hostname=socket.gethostname(), redis_html=redis_html)
 
-    return render_template('redis.html', hostname=socket.gethostname(), server_list=server_data)
+    return render_template('redis.html', hostname=socket.gethostname(), server_list=server_data, redis_server=os.getenv("REDIS_SERVER", "localhost"))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
