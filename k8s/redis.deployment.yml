@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: redis
+      labels: 
+        tier : backend
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:5.0-bullseye
+        ports:
+        - containerPort: 6379
+        command: ["/usr/local/bin/redis-server"]
+        args: ["--appendonly", "yes"]
