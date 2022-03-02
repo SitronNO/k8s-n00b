@@ -23,3 +23,10 @@ spec:
         - containerPort: 6379
         command: ["/usr/local/bin/redis-server"]
         args: ["--appendonly", "yes"]
+        volumeMounts:
+          - name: redis-persistent-storage
+            mountPath: /data
+      volumes:
+      - name: redis-persistent-storage
+        persistentVolumeClaim:
+          claimName: redis-pv-claim
