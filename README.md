@@ -34,4 +34,6 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 - [ ] Expose it via ingress/træfik
 - [ ] Send logs to Splunk
 - [ ] Metrics to Prometheus
-
+- [ ] Set up Gitlab and a registry
+- [ ] Try different databases (k8ssandra, CockroachDB)
+- [ ] Try MinIO for bucket storage
