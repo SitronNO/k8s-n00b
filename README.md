@@ -23,35 +23,35 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 1. Set up a NFS share and edit `redis-pv.yml` accordingly
 1. Create a persistent volume:
 
-    kubectl apply -f redis-pv.yml
+        kubectl apply -f redis-pv.yml
 
 1. Create a persistent volume claim:
 
-    kubectl apply -f redis-pvc.yml
+        kubectl apply -f redis-pvc.yml
 
 1. Deploy a redis server:
 
-    kubectl apply -f redis.deployment.yml 
+        kubectl apply -f redis.deployment.yml 
 
 1. Create a service for the redis server, so helloredis can access it:
 
-    kubectl apply -f redis.svc.yml
+        kubectl apply -f redis.svc.yml
 
 1. Deploy helloredis:
 
-    kubectl apply -f helloredis.deployment.yml
+        kubectl apply -f helloredis.deployment.yml
 
 1. Try accessing the helloredis webpage by using on of the following:
 
-    kubectl port-forward <PODNAME> 5000:5000
-    # curl http://localhost:5000/
+        kubectl port-forward <PODNAME> 5000:5000
+        # curl http://localhost:5000/
+        
+        kubectl expose deployment helloredis --port 5000 --type NodePort
+        # NODE_PORT => kubectl get svc helloredis --output=jsonpath='{range .spec.ports[0]}{.nodePort}')
+        curl http://<NODEIP>:<NODEPORT>/
 
-    kubectl expose deployment helloredis --port 5000 --type NodePort
-    # NODE_PORT => kubectl get svc helloredis --output=jsonpath='{range .spec.ports[0]}{.nodePort}')
-    curl http://<NODEIP>:<NODEPORT>/
-
-    # Will only work when a loadbalancer is available (k3s, cloud env, etc..)
-    kubectl expose deployment helloredis --type=LoadBalancer --name=helloredis-web
+        # Will only work when a loadbalancer is available (k3s, cloud env, etc..)
+        kubectl expose deployment helloredis --type=LoadBalancer --name=helloredis-web
 
     
 ## Progress
