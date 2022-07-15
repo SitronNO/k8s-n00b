@@ -12,5 +12,5 @@ spec:
   storageClassName: nfs
   nfs:
     server: 192.168.10.5
-    path: /opt/exports/nfs/k8s/redis-kubernetes_the_hard_way
+    path: /opt/exports/nfs/k8s/redis-k8s-kubeadm
     readOnly: no

@@ -18,7 +18,7 @@ The Docker images built are hosted on my public repo at Docker Hub: https://hub.
 
 All files related to run the webapp and Redis on my Kubernetes cluster. At the moment, this is my work in progress.
 
-#### How to deploy in a Kubernetes kluster
+#### How to deploy in a Kubernetes cluster
 
 1. Set up a NFS share and edit `redis-pv.yml` accordingly
 1. Create a persistent volume:
@@ -47,7 +47,7 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
         # curl http://localhost:5000/
         
         kubectl expose deployment helloredis --port 5000 --type NodePort
-        # NODE_PORT => kubectl get svc helloredis --output=jsonpath='{range .spec.ports[0]}{.nodePort}')
+        # NODE_PORT => kubectl get svc helloredis --output=jsonpath='{range .spec.ports[0]}{.nodePort}'
         curl http://<NODEIP>:<NODEPORT>/
 
         # Will only work when a loadbalancer is available (k3s, cloud env, etc..)
@@ -66,8 +66,9 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 - [x] Create PersistentVolumeClaim for Redis to use PV
 - [x] Verifiy PVC and PV actually works :-)
 - [x] Set up using ["Kubernetes the hard way"](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+- [x] Set up a private Docker registry
+- [ ] Expose webapp and private Docker registry via ingress/træfik/NGINX-IC
 - [ ] Create a dev-user with access only to webapp and redis
-- [ ] Expose it via ingress/træfik
 - [ ] Send logs to Splunk
 - [ ] Metrics to Prometheus
 - [ ] Set up Gitlab and a registry
