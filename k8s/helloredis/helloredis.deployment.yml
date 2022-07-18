@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: helloredis
   name: helloredis
   labels:
     app: helloredis
@@ -14,6 +15,7 @@ spec:
     metadata:
       labels:
         tier: frontend
+        app: helloredis
     spec:
       containers:
       - name: helloredis

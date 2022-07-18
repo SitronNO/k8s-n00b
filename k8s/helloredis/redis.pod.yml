@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: helloredis
   name: redis
   labels: 
     tier : backend

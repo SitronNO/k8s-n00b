@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: docker-reg
   name: docker-reg-pvc
 spec:
   storageClassName: nfs
