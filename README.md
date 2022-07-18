@@ -21,6 +21,14 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 #### How to deploy in a Kubernetes cluster
 
 1. Set up a NFS share and edit `redis-pv.yml` accordingly
+1. Create a namespace for the helloredis deployment:
+
+        kubectl apply -f helloredis-ns.yml
+
+1. Change to the new namespcace in current context (*optional, but recommended*):
+
+        kubectl config set-context --current --namespace=helloredis
+
 1. Create a persistent volume:
 
         kubectl apply -f redis-pv.yml
@@ -53,6 +61,17 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
         # Will only work when a loadbalancer is available (k3s, cloud env, etc..)
         kubectl expose deployment helloredis --type=LoadBalancer --name=helloredis-web
 
+#### Use an ingress server to access helloredis
+
+1. Expose the helloredis as a service, to be used by an ingress:
+
+        kubectl apply -f helloredis.svc.yml
+
+1. Install and configure a Ingress controller, like [NGINX-IC](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)
+
+1. Create the ingress for helloredis (modify `helloredis.ingress.yml` with our own hostname:
+
+        kubectl apply -f helloredis.ingress.yml -n helloredis
     
 ## Progress
 
@@ -67,7 +86,7 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 - [x] Verifiy PVC and PV actually works :-)
 - [x] Set up using ["Kubernetes the hard way"](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 - [x] Set up a private Docker registry
-- [ ] Expose webapp and private Docker registry via ingress/træfik/NGINX-IC
+- [x] Expose webapp and private Docker registry via ingress/træfik/NGINX-IC
 - [ ] Create a dev-user with access only to webapp and redis
 - [ ] Send logs to Splunk
 - [ ] Metrics to Prometheus
