@@ -20,10 +20,10 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 
 #### How to deploy in a Kubernetes cluster
 
-1. Set up a NFS share and edit `redis-pv.yml` accordingly
+1. Set up a NFS share and edit `redis.pv.yml` accordingly
 1. Create a namespace for the helloredis deployment:
 
-        kubectl apply -f helloredis-ns.yml
+        kubectl apply -f helloredis.ns.yml
 
 1. Change to the new namespcace in current context (*optional, but recommended*):
 
@@ -31,11 +31,11 @@ All files related to run the webapp and Redis on my Kubernetes cluster. At the m
 
 1. Create a persistent volume:
 
-        kubectl apply -f redis-pv.yml
+        kubectl apply -f redis.pv.yml
 
 1. Create a persistent volume claim:
 
-        kubectl apply -f redis-pvc.yml
+        kubectl apply -f redis.pvc.yml
 
 1. Deploy a redis server:
 

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   namespace: docker-reg
-  name: docker-registry-pod
+  name: docker-reg-pod
   labels:
     app: registry
 spec:
@@ -26,4 +26,4 @@ spec:
       claimName: docker-reg-pvc
   - name: certs-vol
     secret:
-      secretName: docker-registry-certs
+      secretName: docker-reg-certs
